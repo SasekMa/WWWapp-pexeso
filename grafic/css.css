@@ -1,9 +1,29 @@
-/*
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
-*/
 /* 
-    Created on : 17. 1. 2022, 18:02:57
+    Created on : 17. 12. 2021, 16:02:57
     Author     : Febidian
 */
-
+body {
+    background-color: LightYellow;
+    text-align: center;
+    color: maroon;}
+.hlavni {
+    width: 800px;
+    margin: 0 auto;
+    background-color: Khaki;
+    border: 1px solid maroon;
+    position: relative;
+    padding: 5px;
+}
+.nadpis {
+    height: 80px;}
+.hraciProstor {
+    display: flex;
+    flex-wrap: wrap;
+    height: 700px;
+    width: 100%;
+    border: 1px solid maroon;
+}
+.hraciProstor img {
+    width: 140px;
+    height: 140 px;
+}
