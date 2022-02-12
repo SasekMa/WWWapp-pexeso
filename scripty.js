@@ -17,14 +17,30 @@ function otocKartu() {
     // první click
     uzJeOtoceno = true;
     prvniKarta = this;
-  } else {
+  } 
+  else {
     // druhý clik
     uzJeOtoceno = false;
     druhaKarta = this;
 
-   //mam dvě karty a teď jenom porovnat - příprava
-   console.log(prvniKarta.dataset.jmeno);
-   console.log(druhaKarta.dataset.jmeno);
+   //mam dvě karty a teď jenom porovnat - příprava - beru karty do paměti pomocí data-jmena (dataset)
+  // console.log(prvniKarta.dataset.jmeno);
+  // console.log(druhaKarta.dataset.jmeno);
+   //porovnávám karty
+    if (prvniKarta.dataset.jmeno === druhaKarta.dataset.jmeno) {
+      // pokud máme schodu jmen - odstraň aktivitu
+      prvniKarta.removeEventListener("click", otocKartu);
+      druhaKarta.removeEventListener("click", otocKartu);
+    } 
+    // kontrola
+    // console.log("provedeno")
+    else {
+       // není pár + dát dost času na vidění
+       setTimeout(() => {
+        prvniKarta.classList.remove("flip");
+        druhaKarta.classList.remove("flip");
+      }, 1200);
+    }
   }
 }
 
