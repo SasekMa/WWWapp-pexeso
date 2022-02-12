@@ -3,6 +3,7 @@ const karty = document.querySelectorAll(".pex-karta");
 let uzJeOtoceno = false;
 let prvniKarta, druhaKarta;
 let uzamkniHru = false;
+let clicks = 0;
 
 
 function otocKartu() {
@@ -30,6 +31,7 @@ function otocKartu() {
 }
 
 function mamePar() {
+    click();
   let jePar = prvniKarta.dataset.jmeno === druhaKarta.dataset.jmeno;
 
   jePar ? deaktivujKarty() : vratitKarty();
@@ -62,6 +64,12 @@ function vratitKarty() {
     });
 })();
 //obalení - IIFE na začátku hry
+
+//počet tahů - přídáno k rozhodování o páru karet
+    function click() {
+        clicks += 1;
+        document.getElementById("clicks").innerHTML = clicks;
+    };
 
 
 karty.forEach(karta => karta.addEventListener("click", otocKartu)); 
