@@ -4,6 +4,7 @@ let uzJeOtoceno = false;
 let prvniKarta, druhaKarta;
 let uzamkniHru = false;
 let clicks = 0;
+let merimeCas = false;
 
 
 function otocKartu() {
@@ -11,6 +12,11 @@ function otocKartu() {
     //console.log("Jo tu jsom");
     //console.log(this)
     
+    //spustit časomíru
+    if (merimeCas === false) {
+        stopky();
+        merimeCas = true;
+    };
     //znefunkčni při 2+
     if (uzamkniHru) return;
     // deaktivuj dvojklik na stejnou kartu - odstraň problém
@@ -64,12 +70,59 @@ function vratitKarty() {
     });
 })();
 //obalení - IIFE na začátku hry
-
-//počet tahů - přídáno k rozhodování o páru karet
-    function click() {
+function click() {
         clicks += 1;
         document.getElementById("clicks").innerHTML = clicks;
-    };
+}
+function restart() {
+	//reset tahů
+    	clicks = 0;
+	document.getElementById("clicks").innerHTML = clicks;
+
+
+        karty.forEach(karta => karta.classList.remove("flip"));
+        karty.forEach(karta => karta.addEventListener("click", otocKartu));
+        setTimeout(zamichej, 1500);
+        
+        //reset stopky
+        merimeCas = false;
+        clearInterval(interval);
+        minuta = 0;
+        sekunda = 0;
+        hodina = 0;
+    	document.getElementById("minuta").innerHTML = minuta;
+        document.getElementById("sekunda").innerHTML = sekunda;
+}
+function zamichej() {
+   	karty.forEach(karta => {
+    let nahodnaPos = Math.floor(Math.random() * 16);
+    karta.style.order = nahodnaPos; }); 
+}
+
+// stopky
+let sekunda = 0, minuta = 0, hodina = 0;
+let timer = document.querySelector(".timer");
+let interval;
+
+function stopky() {
+  interval = setInterval(function() {
+    //stopky.innerHTML = minuta+"minut "+sekunda+"sekund";
+    sekunda++;
+    
+    if (sekunda == 60) {
+      minuta++;
+      sekunda = 0;
+    }
+    
+    if (minuta == 60) {
+      hodina++;
+      minuta = 0;
+    }
+    	document.getElementById("minuta").innerHTML = minuta;
+        document.getElementById("sekunda").innerHTML = sekunda;
+  }, 1000);
+}
+
 
 
 karty.forEach(karta => karta.addEventListener("click", otocKartu)); 
