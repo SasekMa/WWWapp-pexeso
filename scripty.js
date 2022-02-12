@@ -12,6 +12,8 @@ function otocKartu() {
     
     //znefunkčni při 2+
     if (uzamkniHru) return;
+    // deaktivuj dvojklik na stejnou kartu - odstraň problém
+    if (this === prvniKarta) return;
     //změň třídu
     this.classList.toggle("flip");
 
