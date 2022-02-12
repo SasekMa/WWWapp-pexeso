@@ -55,5 +55,13 @@ function vratitKarty() {
     }, 1200);
 }
 
+(function zamichat() {
+    karty.forEach(karta => {
+    let nahodnaPos = Math.floor(Math.random() * 16);
+    karta.style.order = nahodnaPos;
+    });
+})();
+//obalení - IIFE na začátku hry
+
 
 karty.forEach(karta => karta.addEventListener("click", otocKartu)); 
