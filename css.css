@@ -8,10 +8,7 @@ body {
     color: maroon;
 
 }
-img {
-    width: 140px;
-    height: 140px;
-}
+
 .hlavni {
     width: 800px;
     margin: 0 auto;
@@ -24,3 +21,35 @@ img {
 .nadpis {
     height: 80px;}
 
+.pexeso-hra {
+  width: 700px;
+  height: 700px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+
+
+}
+
+.pex-karta {
+  width: 140px;
+  height: 140px;
+margin: 5px 5px;
+  position: relative;
+  transform: scale(1);
+}
+
+.pex-karta:active {
+  transform: scale(0.96);
+  transition: transform .25s;
+}
+
+.predek,
+.zadek {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  position: absolute;
+  border-radius: 5px;
+  background: #1C7CCC;
+}
