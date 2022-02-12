@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+    background-color: LightYellow;
+    text-align: center;
+    color: maroon;
+
+}
+img {
+    width: 140px;
+    height: 140px;
+}
+.hlavni {
+    width: 800px;
+    margin: 0 auto;
+    background-color: Khaki;
+    border: 1px solid maroon;
+    position: relative;
+    padding: 5px;
+}
+
+.nadpis {
+    height: 80px;}
+
