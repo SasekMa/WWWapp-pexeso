@@ -4,7 +4,7 @@
 
 body {
     background-color: LightYellow;
-    text-align: center;
+
     color: maroon;
 
 }
@@ -14,12 +14,13 @@ body {
     margin: 0 auto;
     background-color: Khaki;
     border: 1px solid maroon;
-    position: relative;
     padding: 5px;
 }
 
 .nadpis {
-    height: 80px;}
+    height: 80px;
+    text-align: center;
+}
 
 .pexeso-hra {
   width: 700px;
@@ -27,16 +28,22 @@ body {
   margin: auto;
   display: flex;
   flex-wrap: wrap;
-
+  perspective: 1000px; 
 
 }
 
 .pex-karta {
-  width: 140px;
-  height: 140px;
-margin: 5px 5px;
+  width: 150px;
+  height: 150px;
+margin: 5px;
   position: relative;
   transform: scale(1);
+transform-style: preserve-3d;
+  transition: transform .5s;
+}
+
+.pex-karta.flip {
+  transform: rotateY(180deg);
 }
 
 .pex-karta:active {
@@ -52,4 +59,9 @@ margin: 5px 5px;
   position: absolute;
   border-radius: 5px;
   background: #1C7CCC;
+ backface-visibility: hidden;
+}
+
+.predek {
+  transform: rotateY(180deg);
 }

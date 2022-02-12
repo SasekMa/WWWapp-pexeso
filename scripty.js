@@ -1,10 +1,12 @@
 const karty = document.querySelectorAll(".pex-karta");
 
 function otocKartu() {
-console.log("Jo tu jsom");
-console.log(this)
+//test funkčnosti
+//console.log("Jo tu jsom");
+//console.log(this)
 
-//  this.classList.toggle("flip");
+//změň třídu
+  this.classList.toggle("flip");
 }
 
 karty.forEach(karta => karta.addEventListener("click", otocKartu));
