@@ -2,46 +2,56 @@ const karty = document.querySelectorAll(".pex-karta");
 
 let uzJeOtoceno = false;
 let prvniKarta, druhaKarta;
-
+let uzamkniHru = false;
 
 
 function otocKartu() {
-//test funkčnosti
-//console.log("Jo tu jsom");
-//console.log(this)
+    //test funkčnosti
+    //console.log("Jo tu jsom");
+    //console.log(this)
+    
+    //znefunkčni při 2+
+    if (uzamkniHru) return;
+    //změň třídu
+    this.classList.toggle("flip");
 
-//změň třídu
-  this.classList.toggle("flip");
-
-  if (!uzJeOtoceno) {
-    // první click
+    if (!uzJeOtoceno) {
+        // první click
     uzJeOtoceno = true;
     prvniKarta = this;
-  } 
-  else {
-    // druhý clik
+    
+    return;
+    }   
     uzJeOtoceno = false;
     druhaKarta = this;
+    mamePar();
+}
 
-   //mam dvě karty a teď jenom porovnat - příprava - beru karty do paměti pomocí data-jmena (dataset)
-  // console.log(prvniKarta.dataset.jmeno);
-  // console.log(druhaKarta.dataset.jmeno);
-   //porovnávám karty
-    if (prvniKarta.dataset.jmeno === druhaKarta.dataset.jmeno) {
+function mamePar() {
+  let jePar = prvniKarta.dataset.jmeno === druhaKarta.dataset.jmeno;
+
+  jePar ? deaktivujKarty() : vratitKarty();
+}
+
+
+function deaktivujKarty() {
       // pokud máme schodu jmen - odstraň aktivitu
       prvniKarta.removeEventListener("click", otocKartu);
       druhaKarta.removeEventListener("click", otocKartu);
-    } 
-    // kontrola
-    // console.log("provedeno")
-    else {
-       // není pár + dát dost času na vidění
-       setTimeout(() => {
-        prvniKarta.classList.remove("flip");
-        druhaKarta.classList.remove("flip");
-      }, 1200);
     }
-  }
+
+
+function vratitKarty() {
+        // není pár + dát dost času na vidění, odemkni karty
+    uzamkniHru = true;
+    
+    setTimeout(() => {
+    prvniKarta.classList.remove("flip");
+    druhaKarta.classList.remove("flip");
+    
+    uzamkniHru = false;
+    }, 1200);
 }
+
 
 karty.forEach(karta => karta.addEventListener("click", otocKartu)); 
