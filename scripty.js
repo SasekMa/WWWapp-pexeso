@@ -5,7 +5,8 @@ let prvniKarta, druhaKarta;
 let uzamkniHru = false;
 let clicks = 0;
 let merimeCas = false;
-
+let pocetParu = 0;
+let hodnoceni = 0;
 
 function otocKartu() {
     //test funkčnosti
@@ -39,7 +40,7 @@ function otocKartu() {
 function mamePar() {
     click();
   let jePar = prvniKarta.dataset.jmeno === druhaKarta.dataset.jmeno;
-
+   
   jePar ? deaktivujKarty() : vratitKarty();
 }
 
@@ -48,6 +49,9 @@ function deaktivujKarty() {
       // pokud máme schodu jmen - odstraň aktivitu
       prvniKarta.removeEventListener("click", otocKartu);
       druhaKarta.removeEventListener("click", otocKartu);
+      pocetParu++;
+      konecHry();
+      //console.log(pocetParu);
     }
 
 
@@ -78,7 +82,7 @@ function restart() {
 	//reset tahů
     	clicks = 0;
 	document.getElementById("clicks").innerHTML = clicks;
-
+        pocetParu = 0;
 
         karty.forEach(karta => karta.classList.remove("flip"));
         karty.forEach(karta => karta.addEventListener("click", otocKartu));
@@ -92,6 +96,9 @@ function restart() {
         hodina = 0;
     	document.getElementById("minuta").innerHTML = minuta;
         document.getElementById("sekunda").innerHTML = sekunda;
+        
+        //zavri modal
+        modal.style.display = "none";
 }
 function zamichej() {
    	karty.forEach(karta => {
@@ -123,6 +130,44 @@ function stopky() {
   }, 1000);
 }
 
+function konecHry() {
+    if (pocetParu == 8) {
+      clearInterval(interval);
 
+      document.getElementById("minuta1").innerHTML = minuta;
+      document.getElementById("sekunda1").innerHTML = sekunda;
+      document.getElementById("clicks1").innerHTML = clicks;
+      modal.style.display = "block";
+    
+    if (clicks <= 12) {
+        hodnoceni = "Dokonalé";
+    } else if (clicks <= 16) {
+        hodnoceni = "Výborné";
+    } else if (clicks <= 22) {
+        hodnoceni = "Chvalitebné";
+    } else if (clicks <= 28) {
+        hodnoceni = "Dobré";
+    } else {
+        hodnoceni = "Nic moc";
+    } 
+    document.getElementById("hodnoceni").innerHTML = hodnoceni;
+  }
+}
+
+var modal = document.getElementById("gratulace");
+var span = document.getElementsByClassName("close")[0];
+
+span.onclick = function() {
+  modal.style.display = "none";
+};
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
 
 karty.forEach(karta => karta.addEventListener("click", otocKartu)); 
+
+
+
