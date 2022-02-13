@@ -1,5 +1,30 @@
 const karty = document.querySelectorAll(".pex-karta");
 
+    if(typeof(Storage) !== "undefined") {
+    let osloveni = localStorage.getItem("osloveni");
+    const ulozHrac = document.getElementById("ulozHrac");
+    console.log(osloveni);
+    if(osloveni) {
+        document.getElementById("uvitani").innerHTML = osloveni;
+        document.getElementById("hrac1").innerHTML = osloveni;
+    }else {
+        document.getElementById("ulozHrac").addEventListener("click", (ev) => {
+            let jmeno = document.getElementById("novyHrac").value;
+
+            localStorage.setItem("osloveni", jmeno);
+            document.getElementById("uvitani").innerHTML = localStorage.getItem("osloveni");
+        });
+    }
+    ulozHrac.onclick = function () {
+
+    let jmeno = document.getElementById("novyHrac").value;
+    document.getElementById("uvitani").innerHTML = jmeno;
+    //console.log(jmeno);
+    document.getElementById("hrac1").innerHTML = jmeno;
+  };
+}
+
+
 let uzJeOtoceno = false;
 let prvniKarta, druhaKarta;
 let uzamkniHru = false;
@@ -169,5 +194,10 @@ window.onclick = function(event) {
 
 karty.forEach(karta => karta.addEventListener("click", otocKartu)); 
 
+// ke kontrole
+var btn = document.getElementById("myBtn");
+btn.onclick = function() {
+  modal.style.display = "block";
+};
 
 

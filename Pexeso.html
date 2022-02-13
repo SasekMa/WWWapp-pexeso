@@ -10,9 +10,9 @@
   <div class="hlavni">
             <div class="nadpis">
                 <h1>Pexeso - hra na paměť</h1>
-
-<p>Uběhlý čas: <a id="minuta">0</a> minut <a id="sekunda">0</a> sekund &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tahů: <a id="clicks">0</a> <button style="font-size:16px" onclick="restart()">Reset hry</button></p>
-
+<div class="input"> Jméno:  <input id="novyHrac" placeholder="Jméno hráče"> &nbsp;&nbsp;<button type="button" id="ulozHrac"> Ulož hráče </button></div>
+<p>Hráč <b><a id="uvitani">Neznámý</a></b>: Uběhlý čas: <a id="minuta">0</a> minut <a id="sekunda">0</a> sekund &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tahů: <a id="clicks">0</a> <button style="font-size:16px" onclick="restart()">Reset hry</button></p>
+    
             </div>
 
   <section class="pexeso-hra">
@@ -90,15 +90,18 @@
   </section>
 
 <!--
+slouží ke kontrole
 <button id="myBtn">Open Modal</button>
 -->
+
+
 
 <div id="gratulace" class="modal">
 
   <!-- Modal obsah -->
   <div class="modal-content">
     <span class="close">&times;</span>
-    <h1>Gratulujeme k vítězství!</h1>
+    <h1>Gratulujeme <a id="hrac1"> </a> k vítězství!</h1>
     <p>K vítězství bylo potřeba <b> <a id="clicks1">0</a> tahů</b> a celkem <b><a id="minuta1">0</a> minut a <a id="sekunda1">0</a> sekund.</b></p>
     <p>Hodnocení vašeho výkonu je <b> <a id="hodnoceni">---</a> </b>!</p>
     <p><button style="font-size:16px" onclick="restart()">Zahrajeme znovu?</button></p>

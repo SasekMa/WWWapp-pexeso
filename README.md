@@ -7,9 +7,9 @@ css barvy a styl
 karty
 GUI rozhraní
 Karty se zamíchají při načtení nebo restartu
-hra pracuje se stejnými / různými kartymi při odkrytí
+hra pracuje se stejnými / různými kartami při odkrytí
 hra zobrazí počet tahů uživatele
-hra ohodnotí uživatele hvězdou podle množství tahů (1-3)
+hra ohodnotí uživatele podle množství tahů 
 při startu hry se spustí stopky a při ukončení hry se zastaví
 reset tlačítko restartuje hrací plochu, stopky a hodnocení
-na konci se zobrazí hodnocení vítězství a ukáže tlačítko hraj znovu a jak dlouho to trvalo + hodnocení hvězdami
+na konci se zobrazí hodnocení vítězství a ukáže tlačítko hraj znovu a jak dlouho to trvalo + slovní hodnocení 
